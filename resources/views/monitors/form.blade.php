@@ -11,11 +11,11 @@
             @csrf
 
             <div class="my-3">
-                <input type="text" name="name" class="w-full outline-none focus:outline-none border-b border-gray-500 py-1" placeholder="Monitor name">
+                <input type="text" name="name" class="w-full outline-none focus:outline-none border-b border-gray-500 py-1" placeholder="Monitor name" value="{{ $monitor->name }}">
             </div>
 
             <div class="my-3">
-                <input type="text" name="url" class="w-full outline-none focus:outline-none border-b border-gray-500 py-1" placeholder="Monitor URL">
+                <input type="text" name="url" class="w-full outline-none focus:outline-none border-b border-gray-500 py-1" placeholder="Monitor URL" value="{{ $monitor->url }}">
             </div>
 
             <div class="my-3">
