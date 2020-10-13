@@ -1,7 +1,7 @@
 @if(empty($pings))
     <div class="text-center text-gray-500 my-3">No data</div>
 @else
-    <canvas class="w-full" id="{{ $id }}"></canvas>
+    <canvas class="w-full" height="{{ $height }}px" id="{{ $id }}"></canvas>
 @endif
 
 @push('footer')

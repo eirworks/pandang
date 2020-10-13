@@ -16,19 +16,25 @@ class PingLineChart extends Component
      * @var string
      */
     public $id;
+    /**
+     * @var int
+     */
+    public $height;
 
     /**
      * Create a new component instance.
      *
      * @param $name
      * @param array $pings
+     * @param int $height
      */
-    public function __construct($name, $pings = [])
+    public function __construct($name, $pings = [], $height = 300)
     {
         //
         $this->pings = $pings;
         $this->name = $name;
         $this->id = "chart-".Str::random(8);
+        $this->height = $height;
     }
 
     /**

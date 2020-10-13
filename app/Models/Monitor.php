@@ -9,6 +9,11 @@ class Monitor extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'url'
+    ];
+
     public function pings()
     {
         return $this->hasMany(Ping::class);
