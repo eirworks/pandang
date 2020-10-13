@@ -10,7 +10,7 @@
 
         <div class="my-3">
             <button class="outline-none focus:outline-none border border-orange-700 px-2 py-1 bg-orange-500 text-orange-200 rounded mr-1">Create Monitor</button>
-            <button class="outline-none focus:outline-none border border-gray-700 px-2 py-1 rounded mr-1">Settings</button>
+            <a href="{{ route('projects::edit', [$project]) }}" class="outline-none focus:outline-none border border-gray-700 px-2 py-1 rounded mr-1">Settings</a>
         </div>
 
         <div class="my-3">

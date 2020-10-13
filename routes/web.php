@@ -29,7 +29,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::group(['prefix' => 'projects', 'as' => 'projects::'], function() {
         Route::get('/', [ProjectController::class, 'index'])->name('index');
-        Route::get('/{project}', [ProjectController::class, 'show'])->name('show');
         Route::post('/', [ProjectController::class, 'store'])->name('store');
+        Route::get('/{project}', [ProjectController::class, 'show'])->name('show');
+        Route::get('/{project}/edit', [ProjectController::class, 'edit'])->name('edit');
+        Route::put('/{project}/edit', [ProjectController::class, 'update'])->name('update');
     });
 });

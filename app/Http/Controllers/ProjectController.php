@@ -34,6 +34,13 @@ class ProjectController extends Controller
         ]);
     }
 
+    public function edit(Project $project)
+    {
+        return view('projects.form', [
+            'project' => $project,
+        ]);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
