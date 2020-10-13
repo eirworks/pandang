@@ -21,6 +21,10 @@
         <div class="border border-gray-400 bg-white p-3 rounded my-3">
             <x-ping-line-chart :pings="$pings" name="$monitor->name" />
         </div>
+
+        <div class="my-3">
+            <code class="text-pink-500">{{ $monitor->url }}</code>
+        </div>
     </div>
 @endsection
 

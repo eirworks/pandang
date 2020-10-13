@@ -13,4 +13,8 @@ class Ping extends Model
         'request' => 'collection',
         'response' => 'collection',
     ];
+
+    protected $fillable = [
+        'status', 'response', 'request', 'time'
+    ];
 }
