@@ -4,12 +4,14 @@
     <div class="my-3">
         <canvas class="w-full" height="{{ $height }}px" id="{{ $id }}"></canvas>
     </div>
-    <div class="my-3">
-        <span class="mr-2">Average {{ $pings->pluck('time')->avg() }}s</span>
-        <span class="mr-2">Highest {{ $pings->pluck('time')->max() }}s</span>
-        <span class="mr-2">Lowest {{ $pings->pluck('time')->min() }}s</span>
-        <span class="mr-2 text-red-600">Downtime {{ $pings->filter(function($ping) { return $ping->time == 0;})->count() }}</span>
-    </div>
+    @if($displayStat)
+        <div class="my-3">
+            <span class="mr-2">Average {{ number_format($pings->pluck('time')->avg(), 2) }}s</span>
+            <span class="mr-2">Slowest {{ $pings->pluck('time')->max() }}s</span>
+            <span class="mr-2">Fastest {{ $pings->pluck('time')->filter(function($ping) { return $ping > 0; })->min() }}s</span>
+            <span class="mr-2 text-red-600">Downtime {{ $pings->filter(function($ping) { return $ping->time == 0;})->count() }}</span>
+        </div>
+    @endif
 @endif
 
 @push('footer')

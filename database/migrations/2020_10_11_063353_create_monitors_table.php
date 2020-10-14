@@ -18,6 +18,9 @@ class CreateMonitorsTable extends Migration
             $table->bigInteger('project_id');
             $table->string('name');
             $table->text('url');
+            $table->boolean('activated')->default(false)->index();
+            $table->json('data');
+            $table->json('settings');
             $table->timestamps();
         });
     }

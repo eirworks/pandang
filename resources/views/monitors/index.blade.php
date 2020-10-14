@@ -18,8 +18,14 @@
             <x-ping-status :ping="$pings->last()" />
         </div>
 
+        @if(!$monitor->activated)
+            <div class="my-3 bg-yellow-500 text-center text-white font-bold px-2 py-1">
+                MONITORING PAUSED
+            </div>
+        @endif
+
         <div class="border border-gray-400 bg-white p-3 rounded my-3">
-            <x-ping-line-chart :pings="$pings" name="$monitor->name" />
+            <x-ping-line-chart :pings="$pings" name="$monitor->name" :displayStat="true" />
         </div>
 
         <div class="my-3">

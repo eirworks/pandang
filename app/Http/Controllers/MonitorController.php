@@ -40,20 +40,21 @@ class MonitorController extends Controller
 
     public function store(Request $request, Project $project)
     {
-        $project->monitors()->save(
+        $monitor = $project->monitors()->save(
             new Monitor($request->only(['name', 'url']))
         );
 
-        return redirect()->route('projects::show', [$project])
+        return redirect()->route('projects::monitors::show', [$project, $monitor])
             ->with('success', __('messages.content_saved', ['name' => __('monitors.monitor')]));
     }
 
     public function update(Request $request, Project $project, Monitor $monitor)
     {
         $monitor->fill($request->only(['name', 'url']));
+        $monitor->activated = $request->input('activated');
         $monitor->save();
 
-        return redirect()->route('projects::show', [$project])
+        return redirect()->route('projects::monitors::show', [$project, $monitor])
             ->with('success', __('messages.content_saved', ['name' => __('monitors.monitor')]));
     }
 

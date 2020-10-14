@@ -40,7 +40,7 @@ class CheckUrl extends Command
      */
     public function handle()
     {
-        $monitors = Monitor::get();
+        $monitors = Monitor::where('activated', true)->get();
 
         foreach($monitors as $monitor)
         {

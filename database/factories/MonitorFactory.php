@@ -25,6 +25,9 @@ class MonitorFactory extends Factory
             'project_id' => 1,
             'name' => $this->faker->colorName,
             'url' => 'https://google.com',
+            'activated' => false,
+            'data' => [],
+            'settings' => [],
         ];
     }
 }
