@@ -34,3 +34,10 @@
     </div>
 @endsection
 
+@push('footer')
+    <script>
+        setTimeout(function(){
+            window.location.reload()
+        }, 60000);
+    </script>
+@endpush
