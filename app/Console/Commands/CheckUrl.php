@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Libs\SmsNotifier\SmsContract;
+use App\Libs\SmsNotifier\Twilio;
 use App\Models\Monitor;
 use App\Models\Ping;
 use Illuminate\Console\Command;
@@ -22,15 +24,20 @@ class CheckUrl extends Command
      * @var string
      */
     protected $description = 'Check URL status and save it to pings';
+    /**
+     * @var SmsContract
+     */
+    private $sms;
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(SmsContract $sms)
     {
         parent::__construct();
+        $this->sms = $sms;
     }
 
     /**
@@ -61,9 +68,27 @@ class CheckUrl extends Command
 
             $cache[$monitor->url] = $ping;
 
+            if ($ping->status != 200)
+            {
+                $this->sendNotification("Site Error!", $monitor->settings->get(Monitor::SETTING_SMS_NUMBER));
+            }
+
             break;
         }
 
         return 0;
+    }
+
+    private function sendNotification($message, $target)
+    {
+        try {
+            $this->line('Target: '.$target);
+            $this->line('From: '.config('services.twilio.from'));
+            $this->sms->send($message, $target);
+        }
+        catch (\Exception $exception)
+        {
+            $this->error("Error sending SMS notification: ".$exception->getMessage());
+        }
     }
 }

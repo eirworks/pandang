@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce459bf5436bd8c5b600948dac9e753c",
+    "content-hash": "b60249750fbff8f09952a90536ddbe84",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4271,6 +4271,56 @@
             "time": "2020-07-13T06:12:54+00:00"
         },
         {
+            "name": "twilio/sdk",
+            "version": "6.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twilio/twilio-php.git",
+                "reference": "463282c0091ba65ba9e9b249e7288cb59fb5ec77"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/463282c0091ba65ba9e9b249e7288cb59fb5ec77",
+                "reference": "463282c0091ba65ba9e9b249e7288cb59fb5ec77",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^6.3 || ^7.0",
+                "phpunit/phpunit": ">=4.5",
+                "theseer/phpdox": "^0.12.0"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Twilio\\": "src/Twilio/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Twilio API Team",
+                    "email": "api@twilio.com"
+                }
+            ],
+            "description": "A PHP wrapper for Twilio's API",
+            "homepage": "http://github.com/twilio/twilio-php",
+            "keywords": [
+                "api",
+                "sms",
+                "twilio"
+            ],
+            "time": "2020-10-14T19:06:26+00:00"
+        },
+        {
             "name": "vinkla/hashids",
             "version": "9.0.0",
             "source": {
@@ -6664,7 +6714,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3"
+        "php": "^7.3",
+        "ext-gmp": "*"
     },
     "platform-dev": []
 }

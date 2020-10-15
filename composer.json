@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.0",
         "livewire/livewire": "^2.2",
         "sven/artisan-view": "^3.3",
+        "twilio/sdk": "^6.11",
         "vinkla/hashids": "^9.0"
     },
     "require-dev": {

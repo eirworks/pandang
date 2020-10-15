@@ -49,8 +49,10 @@ class MonitorController extends Controller
 
     public function update(Request $request, Project $project, Monitor $monitor)
     {
+        $settings = $request->input('settings', []);
         $monitor->fill($request->only(['name', 'url']));
         $monitor->activated = $request->input('activated');
+        $monitor->settings = $settings;
         $monitor->save();
 
         return redirect()->route('projects::monitors::show', [$project, $monitor])

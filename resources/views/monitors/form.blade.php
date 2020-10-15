@@ -32,18 +32,18 @@
 
                     <div class="my-3">
                         <label class="block">
-                            <input type="checkbox" name="{{ \App\Models\Monitor::SETTING_SEND_ALERT }}" value="1" {{ $monitor->settings->get(\App\Models\Monitor::SETTING_SEND_ALERT) ? 'checked' : '' }} class="mr-1">
+                            <input type="checkbox" name="settings[{{ \App\Models\Monitor::SETTING_SEND_ALERT }}]" value="1" {{ $monitor->settings->get(\App\Models\Monitor::SETTING_SEND_ALERT) ? 'checked' : '' }} class="mr-1">
                             Enable notification when site is down?
                         </label>
                     </div>
 
                     <div class="my-3">
-                        <input type="tel" name="{{ \App\Models\Monitor::SETTING_SMS_NUMBER }}" class="w-full outline-none focus:outline-none border-b border-gray-500 py-1" placeholder="Alert Mobile Phone number" value="{{ $monitor->settings->get(\App\Models\Monitor::SETTING_SMS_NUMBER) }}">
+                        <input type="text" name="settings[{{ \App\Models\Monitor::SETTING_SMS_NUMBER }}]" class="w-full outline-none focus:outline-none border-b border-gray-500 py-1" placeholder="Alert Mobile Phone number" value="{{ $monitor->settings->get(\App\Models\Monitor::SETTING_SMS_NUMBER) }}">
                         <div class="my-1 text-gray-600 text-sm">Leave it empty to use phone number from the project.</div>
                     </div>
 
                     <div class="my-3">
-                        <input type="number" name="{{ \App\Models\Monitor::SETTING_DOWNTIME_DELAYS }}" class="w-full outline-none focus:outline-none border-b border-gray-500 py-1" placeholder="Delays" value="{{ $monitor->settings->get(\App\Models\Monitor::SETTING_DOWNTIME_DELAYS, 0) }}">
+                        <input type="number" name="settings[{{ \App\Models\Monitor::SETTING_DOWNTIME_DELAYS }}]" class="w-full outline-none focus:outline-none border-b border-gray-500 py-1" placeholder="Delays" value="{{ $monitor->settings->get(\App\Models\Monitor::SETTING_DOWNTIME_DELAYS, 0) }}">
                         <div class="my-1 text-gray-600 text-sm">How many downtime ping you want before we send alert notification?</div>
                     </div>
                 @endif
