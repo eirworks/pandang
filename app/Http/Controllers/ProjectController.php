@@ -25,7 +25,10 @@ class ProjectController extends Controller
             ->paginate();
 
         $monitors = $monitors->setCollection($monitors->getCollection()->each(function($monitor) {
-            $monitor->pings = $monitor->pings()->limit(60)->get();
+            $monitor->pings = $monitor->pings()
+                ->limit(60)
+                ->latest('id')
+                ->get();
         }));
 
         return view('projects.show', [

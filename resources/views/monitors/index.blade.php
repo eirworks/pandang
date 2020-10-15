@@ -15,7 +15,7 @@
         </div>
 
         <div class="my-3">
-            <x-ping-status :ping="$pings->last()" />
+            <x-ping-status :ping="$pings->reverse()->last()" />
         </div>
 
         @if(!$monitor->activated)

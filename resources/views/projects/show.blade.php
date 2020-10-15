@@ -29,11 +29,7 @@
                                 <a href="{{ route('projects::monitors::edit', [$project, $monitor]) }}" class="mr-2">Edit</a>
                             </div>
                         </div>
-                        @if($monitor->pings->last())
-                            <div class="bg-{{ $monitor->pings->last()->time > 0 ? 'green' : 'red' }}-500 text-white px-2 py-1"><span class="font-bold">{{ $monitor->pings->last()->time > 0 ? 'UP' : 'DOWN' }}</span></div>
-                        @else
-                            <div class="text-gray-500 text-center border border-gray-400 px-2 py-1">No data</div>
-                        @endif
+                        <x-ping-status :ping="$monitor->pings->reverse()->last()" />
                         <x-ping-line-chart :pings="$monitor->pings" :name="$monitor->name" />
                     </div>
                 </div>

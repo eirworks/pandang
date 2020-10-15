@@ -23,7 +23,7 @@
                 datasets: [
                     {
                         label: "Milisecs",
-                        data: [{{ $pings->pluck('time')->join(',') }}],
+                        data: [{{ $pings->pluck('time')->reverse()->join(',') }}],
                         lineTension: 0,
                         borderColor: '#ED8936',
                         backgroundColor: '#f3c59966'

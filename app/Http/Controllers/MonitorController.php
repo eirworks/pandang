@@ -13,8 +13,7 @@ class MonitorController extends Controller
         $pings = $monitor->pings()
             ->limit(60)
             ->latest('id')
-            ->get()
-            ->reverse();
+            ->get();
 
         return view('monitors.index', [
             'project' => $project,
