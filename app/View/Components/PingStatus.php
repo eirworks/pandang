@@ -15,9 +15,9 @@ class PingStatus extends Component
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param Ping $ping
      */
-    public function __construct(Ping $ping)
+    public function __construct(?Ping $ping)
     {
         //
         $this->ping = $ping;
