@@ -25,6 +25,10 @@ class Monitor extends Model
         'url'
     ];
 
+    protected $attributes = [
+        'data' => [],
+    ];
+
     public function pings()
     {
         return $this->hasMany(Ping::class);
