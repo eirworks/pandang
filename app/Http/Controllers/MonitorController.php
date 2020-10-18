@@ -39,9 +39,11 @@ class MonitorController extends Controller
 
     public function store(Request $request, Project $project)
     {
-        $monitor = $project->monitors()->save(
-            new Monitor($request->only(['name', 'url']))
-        );
+        $monitor = new Monitor($request->only(['name', 'url']));
+        $monitor->project_id = $project->id;
+        $monitor->data = [];
+        $monitor->settings = [];
+        $monitor->save();
 
         return redirect()->route('projects::monitors::show', [$project, $monitor])
             ->with('success', __('messages.content_saved', ['name' => __('monitors.monitor')]));
