@@ -19,7 +19,7 @@
         new Chart(document.getElementById('{{ $id }}'), {
             type: 'line',
             data: {
-                labels: [{{ implode(',', range(0, count($pings) - 1)) }}],
+                labels: [{!!  $pings->map(function($p) { return "'".\Carbon\Carbon::parse($p->created_at)->format("h:i")."'"; })->join(',')  !!}],
                 datasets: [
                     {
                         label: "Milisecs",
@@ -35,6 +35,13 @@
                     yAxes: [{
                         ticks: {
                             beginAtZero: true
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 12,
+                            maxRotation: 0,
                         }
                     }]
                 }
