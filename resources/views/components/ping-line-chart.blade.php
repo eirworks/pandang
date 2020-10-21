@@ -29,6 +29,15 @@
                         backgroundColor: '#f3c59966'
                     }
                 ]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
         })
     </script>
