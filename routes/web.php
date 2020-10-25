@@ -22,6 +22,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::post('login', [LoginController::class, 'index'])->name('login.submit');
+Route::get('mon/{id}', [MonitorController::class, 'publicShow'])->name('monitor::public');
 
 Route::group(['middleware' => 'auth'], function() {
 

@@ -13,6 +13,7 @@ class Monitor extends Model
     const SETTING_DOWNTIME_DELAYS = "downtime_delays";
     const SETTING_FILTER_ERROR_TYPE = "filter_error_type";
     const SETTING_SMS_NUMBER = "sms_number";
+    const SETTING_PUBLIC = "public";
 
     protected $casts = [
         'activated' => 'boolean',

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Monitor;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Vinkla\Hashids\Facades\Hashids;
 
 class MonitorController extends Controller
 {
@@ -17,6 +18,28 @@ class MonitorController extends Controller
 
         return view('monitors.index', [
             'project' => $project,
+            'monitor' => $monitor,
+            'pings' => $pings,
+        ]);
+    }
+
+    public function publicShow($id)
+    {
+        $monitor_id = Hashids::connection('monitor')->decode($id)[0] ?? 0;
+
+        $monitor = Monitor::findOrFail($monitor_id);
+
+        if (!$monitor->settings->get(Monitor::SETTING_PUBLIC, false))
+        {
+            abort(404, "Page not found");
+        }
+
+        $pings = $monitor->pings()
+            ->limit(60)
+            ->latest('id')
+            ->get();
+
+        return view('public_monitor', [
             'monitor' => $monitor,
             'pings' => $pings,
         ]);

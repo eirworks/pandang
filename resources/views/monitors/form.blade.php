@@ -32,6 +32,23 @@
 
                     <div class="my-3">
                         <label class="block">
+                            <input type="checkbox" name="settings[{{ \App\Models\Monitor::SETTING_PUBLIC }}]" value="1" {{ $monitor->settings->get(\App\Models\Monitor::SETTING_PUBLIC) ? 'checked' : '' }} class="mr-1">
+                            Public Monitor
+                        </label>
+                        <div class="my-1 text-gray-600 text-sm">
+                            Publicly available monitor, people could access with the public link.
+                        </div>
+                        <div class="my-3 text-gray-600 text-sm">
+                            <a class="text-gray-800"
+                                            target="_blank"
+                                href="{{ route('monitor::public', [ 'id' => \Vinkla\Hashids\Facades\Hashids::connection('monitor')->encode($monitor->id) ]) }}">
+                                View Monitor publicly &nearrow;
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="my-3">
+                        <label class="block">
                             <input type="checkbox" name="settings[{{ \App\Models\Monitor::SETTING_SEND_ALERT }}]" value="1" {{ $monitor->settings->get(\App\Models\Monitor::SETTING_SEND_ALERT) ? 'checked' : '' }} class="mr-1">
                             Enable notification when site is down?
                         </label>
